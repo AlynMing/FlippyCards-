@@ -9,7 +9,6 @@ An X-mark or a check-mark will appear after each answer is tapped.
 
 
 ### App Walk-though
-See GIF photo below:
 <img src="YOUR_GIF_URL_HERE" width=200><br>
 
 
