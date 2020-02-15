@@ -8,7 +8,7 @@ One question asked in a multiple choice question format.
 An X-mark or a check-mark will appear after each answer is tapped.
 
 
-### App Walk-though
+### App Walk-through
 <img src="http://g.recordit.co/CPam3fKzcM.gif" width=200><br>
 
 
