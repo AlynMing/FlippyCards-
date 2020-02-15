@@ -9,7 +9,7 @@ An X-mark or a check-mark will appear after each answer is tapped.
 
 
 ### App Walk-though
-<img src="YOUR_GIF_URL_HERE" width=200><br>
+<img src="http://g.recordit.co/CPam3fKzcM.gif" width=200><br>
 
 
 ## Required
