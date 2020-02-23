@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    //~~~~~~outlets and actions~~~~~~~
     @IBOutlet weak var cards: UIView!
     @IBOutlet weak var backlabel: UILabel!
     @IBOutlet weak var frontlabel: UILabel!
@@ -23,6 +24,28 @@ class ViewController: UIViewController {
     @IBOutlet weak var xmarksymbol2: UIImageView!
     @IBOutlet weak var checkmarksymbol: UIImageView!
     
+    
+    
+    @IBAction func didTapOnFlashcard(_ sender: Any) {
+    }
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    
+    
+    
+    //~~~~~~updating flashcards~~~~~~
+    func updateFlashcard(question: String, answer: String, extra1: String, extra2: String) {
+        frontlabel.text = question
+        backlabel.text = answer
+        option1.setTitle(extra1, for: .normal)
+        option2.setTitle(answer, for: .normal)
+        option3.setTitle(extra2, for: .normal)
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    }
+   
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +53,7 @@ class ViewController: UIViewController {
         xmarksymbol1.isHidden = true
         xmarksymbol2.isHidden = true
         checkmarksymbol.isHidden = true
-        
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         
         //~~~~~~rounded card corners~~~~~~
         cards.layer.cornerRadius = 15
@@ -82,6 +105,28 @@ class ViewController: UIViewController {
 
 
     }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navigationController = segue.destination as! UINavigationController
+        let creationController = navigationController.topViewController as! CreationViewController
+        creationController.flashcardsController = self
+        
+        
+       
+        self.option1.backgroundColor = #colorLiteral(red: 1, green: 0.990821898, blue: 0.4215033054, alpha: 1)
+        self.xmarksymbol1.isHidden = true
+        
+        self.frontlabel.isHidden = false
+        self.checkmarksymbol.isHidden = true
+
+        self.option3.backgroundColor = #colorLiteral(red: 1, green: 0.990821898, blue: 0.4215033054, alpha: 1)
+        self.xmarksymbol2.isHidden = true
+        
+    }
+    
+    
     
     //~~~~~~logic for options~~~~~~
     

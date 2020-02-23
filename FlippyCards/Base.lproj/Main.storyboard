@@ -33,7 +33,7 @@
                                         <color key="backgroundColor" red="1" green="0.98261004686355591" blue="0.46289283037185669" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.23822053109999999" green="0.21723032859999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -53,7 +53,7 @@
                                         <color key="backgroundColor" red="1" green="0.955133597" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <state key="normal" title="Nacho Fries Combo Box">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="0.23822053109999999" green="0.21723032859999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="tappedoption2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UwT-LO-1Lh"/>
@@ -72,7 +72,7 @@
                                         <color key="backgroundColor" red="1" green="0.955133597" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <state key="normal" title="Beefy 5-Layer Burrito Box">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" red="0.23822053109999999" green="0.21723032859999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="tappedoption3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dg4-oP-j7P"/>
@@ -91,7 +91,7 @@
                                         <color key="backgroundColor" red="1" green="0.955133597" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <state key="normal" title="Cheesy Gordita Crunch Box">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="0.23822053109999999" green="0.21723032859999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="tappedoption1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DmY-2H-MNG"/>
@@ -115,6 +115,16 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwv-KG-UQY">
+                                <rect key="frame" x="316" y="54" width="59" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="79"/>
+                                <color key="tintColor" red="0.48684423575129532" green="0.44064744547351503" blue="0.00113242446008276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <segue destination="CH8-We-BSa" kind="presentation" id="1Ed-mf-jvl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -135,9 +145,107 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="zsT-yG-CVm"/>
+                <tapGestureRecognizer id="zsT-yG-CVm">
+                    <connections>
+                        <action selector="didTapOnFlashcard:" destination="BYZ-38-t0r" id="UIw-EJ-R6F"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
+        </scene>
+        <!--Creation View Controller-->
+        <scene sceneID="WtQ-aT-GBo">
+            <objects>
+                <viewController id="MxZ-km-9Lm" customClass="CreationViewController" customModule="FlippyCards" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pNY-7I-ZXk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Question:" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zif-74-Ocr">
+                                <rect key="frame" x="58" y="320" width="299" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.955133597" blue="0.0" alpha="0.23434749119718309" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.23822053109999999" green="0.21723032859999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Correct Answer 1:" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8om-3Q-8G1">
+                                <rect key="frame" x="58" y="385" width="299" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.955133597" blue="0.0" alpha="0.23093639964788731" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.23822053109999999" green="0.21723032859999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Extra Answer 2:" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wrj-ay-BZq">
+                                <rect key="frame" x="58" y="427" width="299" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.955133597" blue="0.0" alpha="0.23093639960000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.23822053109999999" green="0.21723032859999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create a new card:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5E-vR-g9l">
+                                <rect key="frame" x="93" y="227" width="229" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="27"/>
+                                <color key="textColor" red="0.23822053109999999" green="0.21723032859999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Extra Answer 3:" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nRe-4q-epu">
+                                <rect key="frame" x="58" y="469" width="299" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.955133597" blue="0.0" alpha="0.23093639960000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.23822053109999999" green="0.21723032859999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="miw-Kj-0DJ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="DUE-PF-cqH">
+                        <barButtonItem key="leftBarButtonItem" title="Nevermind!" style="done" id="eXk-CP-pJB">
+                            <color key="tintColor" red="0.23822053108808294" green="0.21723032861194791" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="didTapOnCancel:" destination="MxZ-km-9Lm" id="Sfn-H9-OVO"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Continue" style="done" id="rkT-qv-LFP">
+                            <color key="tintColor" red="0.23822053109999999" green="0.21723032859999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="didTapOnDone:" destination="MxZ-km-9Lm" id="S1a-MT-2hY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="AnswerTextField" destination="8om-3Q-8G1" id="h70-Y7-Iqy"/>
+                        <outlet property="ExtraTextField2" destination="Wrj-ay-BZq" id="dOh-TX-fB0"/>
+                        <outlet property="ExtraTextField3" destination="nRe-4q-epu" id="KO1-TP-jpR"/>
+                        <outlet property="QuestionTextField" destination="Zif-74-Ocr" id="0SP-Kl-pMu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oPz-6C-RPU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1786.9565217391305" y="140.625"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TkL-Ew-x1b">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CH8-We-BSa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HDR-Q9-Avg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MxZ-km-9Lm" kind="relationship" relationship="rootViewController" id="hlM-p1-NcO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sJX-AL-FRa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="876.81159420289862" y="140.625"/>
         </scene>
     </scenes>
     <resources>
