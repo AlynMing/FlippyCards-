@@ -8,8 +8,22 @@
 
 import UIKit
 
+
+struct Flashcard {
+    var question: String
+    var answer: String
+    var extra1: String
+    var extra2: String
+}
+
+
+
 class ViewController: UIViewController {
 
+    
+    
+    
+    
     //~~~~~~outlets and actions~~~~~~~
     @IBOutlet weak var cards: UIView!
     @IBOutlet weak var backlabel: UILabel!
@@ -23,30 +37,85 @@ class ViewController: UIViewController {
     @IBOutlet weak var xmarksymbol1: UIImageView!
     @IBOutlet weak var xmarksymbol2: UIImageView!
     @IBOutlet weak var checkmarksymbol: UIImageView!
+    @IBOutlet weak var PrevButton: UIButton!
+    @IBOutlet weak var NextButton: UIButton!
     
     
     
-    @IBAction func didTapOnFlashcard(_ sender: Any) {
+    
+    
+    
+    func saveAllFlashcardsToDisk() {
+        let dictionaryArray = flashcards.map { (card) -> [String: String] in
+            return ["question": card.question, "answer": card.answer]
+        }
+        UserDefaults.standard.set(flashcards, forKey: "flashcards")
+        print("Flashcards saved to UserDefaults!")
     }
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    var flashcards = [Flashcard]()
     
+    func readSavedFlashcards(){
+        if let dictionaryArray = UserDefaults.standard.array(forKey: "flashcards") as? [[String: String]] {
+            let savedCards = dictionaryArray.map { dictionary -> Flashcard in
+                return Flashcard(question: dictionary["question"]!, answer: dictionary["answer"]!, extra1: dictionary["extra1"]!, extra2: dictionary["extra2"]!)
+        }
+            flashcards.append(contentsOf: savedCards)
+    }
+    
+        var currentIndex = 0
+        
+    func updateLabels() {
+        let currentFlashcard = flashcards[currentIndex]
+        frontlabel.text = currentFlashcard.question
+        backlabel.text = currentFlashcard.answer
+    }
+    
+  
     
     
     //~~~~~~updating flashcards~~~~~~
     func updateFlashcard(question: String, answer: String, extra1: String, extra2: String) {
-        frontlabel.text = question
-        backlabel.text = answer
+        let flashcard = Flashcard(question: question, answer: answer, extra1: extra1, extra2: extra2)
         option1.setTitle(extra1, for: .normal)
         option2.setTitle(answer, for: .normal)
         option3.setTitle(extra2, for: .normal)
+        flashcards.append(flashcard)
+        print("🎉New Flashcard Added!🎉")
+        print("There are now \(flashcards.count) flashcards!")
+        currentIndex = flashcards.count - 1
+        print("Your current index is \(currentIndex)!")
+        updateNextPrevButtons()
+        updateLabels()
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     }
    
+        
+        
+        
+        
+        
+    
+    //~~~~~~updating next and prev buttons~~~~~~
+    func updateNextPrevButtons() {
+        if currentIndex == flashcards.count - 1 {
+            NextButton.isEnabled = false
+        } else {
+            NextButton.isEnabled = true
+        }
+        if currentIndex == flashcards.count - currentIndex - 1 {
+            PrevButton.isEnabled = false
+        } else {
+            PrevButton.isEnabled = true
+        }
+    }
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     
+        
+        
+        
     
-    
-    override func viewDidLoad() {
+override func viewDidLoad() {
         super.viewDidLoad()
         
         //~~~~~~correct and incorrect symbols~~~~~~
@@ -54,7 +123,7 @@ class ViewController: UIViewController {
         xmarksymbol2.isHidden = true
         checkmarksymbol.isHidden = true
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        
+       
         //~~~~~~rounded card corners~~~~~~
         cards.layer.cornerRadius = 15
         cards.clipsToBounds = true
@@ -101,11 +170,15 @@ class ViewController: UIViewController {
         option3.clipsToBounds = true
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         
-    
-
-
-    }
-    
+        readSavedFlashcards()
+        
+        if flashcards.count == 0 {
+        updateFlashcard(question: "What is the current seasonal slushie at Taco Bell?", answer: "Electric Blue Raspberry", extra1: "Pineapple Sunset", extra2: "Watermelon with Seeds")
+        } else {
+            updateLabels()
+            updateNextPrevButtons()
+        }
+}
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -130,20 +203,22 @@ class ViewController: UIViewController {
     
     //~~~~~~logic for options~~~~~~
     
-    @IBAction func tappedoption1(_ sender: Any) {
+        @IBAction func tappedoption1(_ sender: Any) {
     option1.backgroundColor = #colorLiteral(red: 1, green: 0.9768008926, blue: 0.4592402693, alpha: 0.5)
     xmarksymbol1.isHidden = false
     }
     
-    @IBAction func tappedoption2(_ sender: Any) {
+        @IBAction func tappedoption2(_ sender: Any) {
     frontlabel.isHidden = true
     checkmarksymbol.isHidden = false
     }
     
-    @IBAction func tappedoption3(_ sender: Any) {
+        @IBAction func tappedoption3(_ sender: Any) {
     option3.backgroundColor = #colorLiteral(red: 1, green: 0.9768008926, blue: 0.4592402693, alpha: 0.5)
     xmarksymbol2.isHidden = false
     }
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
+
+}
 }

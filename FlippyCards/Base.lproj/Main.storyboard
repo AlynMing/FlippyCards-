@@ -116,7 +116,7 @@
                                 <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwv-KG-UQY">
-                                <rect key="frame" x="316" y="54" width="59" height="51"/>
+                                <rect key="frame" x="178" y="755" width="59" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="79"/>
                                 <color key="tintColor" red="0.48684423575129532" green="0.44064744547351503" blue="0.00113242446008276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -125,11 +125,33 @@
                                     <segue destination="CH8-We-BSa" kind="presentation" id="1Ed-mf-jvl"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qfG-J3-uFe">
+                                <rect key="frame" x="39" y="754" width="75" height="79"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="65"/>
+                                <color key="tintColor" red="0.48684423580000002" green="0.44064744550000001" blue="0.00113242446" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="←"/>
+                                <connections>
+                                    <action selector="didTapOnPrev:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t1x-kI-WYA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmn-TI-sXM">
+                                <rect key="frame" x="300" y="753" width="75" height="79"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="65"/>
+                                <color key="tintColor" red="0.48684423580000002" green="0.44064744550000001" blue="0.00113242446" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="→"/>
+                                <connections>
+                                    <action selector="didTapOnNext:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JZg-ec-YKO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="NextButton" destination="cmn-TI-sXM" id="SsG-tm-8xK"/>
+                        <outlet property="PrevButton" destination="qfG-J3-uFe" id="34w-g6-m2H"/>
                         <outlet property="backlabel" destination="wcL-oU-KqQ" id="abu-gL-gn0"/>
                         <outlet property="cards" destination="Xc2-lr-NXW" id="rdz-6Z-zS2"/>
                         <outlet property="checkmarksymbol" destination="VEK-ho-ANH" id="dPM-Xx-KIG"/>
