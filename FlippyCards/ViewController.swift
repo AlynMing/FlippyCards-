@@ -52,6 +52,7 @@ class ViewController: UIViewController {
         UserDefaults.standard.set(flashcards, forKey: "flashcards")
         print("Flashcards saved to UserDefaults!")
     }
+    
     var flashcards = [Flashcard]()
     
     func readSavedFlashcards(){
@@ -60,6 +61,7 @@ class ViewController: UIViewController {
                 return Flashcard(question: dictionary["question"]!, answer: dictionary["answer"]!, extra1: dictionary["extra1"]!, extra2: dictionary["extra2"]!)
         }
             flashcards.append(contentsOf: savedCards)
+    }
     }
     
         var currentIndex = 0
@@ -221,4 +223,4 @@ override func viewDidLoad() {
     
 
 }
-}
+
