@@ -70,11 +70,18 @@ class ViewController: UIViewController {
 
      
      
+     func updateLabels() {
+             let currentFlashcard = flashcards[currentIndex]
+             frontlabel.text = currentFlashcard.question
+             backlabel.text = currentFlashcard.answer
+     }
      
      
      @IBAction func didTapOnNext( sender: Any) {
      
          currentIndex = currentIndex + 1
+        
+         updateLabels()
          
          updateNextPrevButtons()
          
@@ -84,16 +91,13 @@ class ViewController: UIViewController {
     
         currentIndex = currentIndex - 1
         
+        updateLabels()
+        
         updateNextPrevButtons()
         
     }
      
-     func updateLabels() {
-             let currentFlashcard = flashcards[currentIndex]
-             frontlabel.text = currentFlashcard.question
-             backlabel.text = currentFlashcard.answer
-     }
-     
+
      
      
      
