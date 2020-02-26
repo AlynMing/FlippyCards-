@@ -49,11 +49,13 @@ class ViewController: UIViewController {
         let dictionaryArray = flashcards.map { (card) -> [String: String] in
             return ["question": card.question, "answer": card.answer]
         }
-        UserDefaults.standard.set(flashcards, forKey: "flashcards")
+        UserDefaults.standard.set(dictionaryArray, forKey: "flashcards")
         print("Flashcards saved to UserDefaults!")
     }
     
     var flashcards = [Flashcard]()
+    
+    var currentIndex = 0
     
     func readSavedFlashcards(){
         if let dictionaryArray = UserDefaults.standard.array(forKey: "flashcards") as? [[String: String]] {
@@ -64,35 +66,41 @@ class ViewController: UIViewController {
     }
     }
     
-        var currentIndex = 0
+      
+
+     
+     
+     
+     
+     @IBAction func didTapOnNext( sender: Any) {
+     
+         currentIndex = currentIndex + 1
+         
+         updateNextPrevButtons()
+         
+     }
+
+    @IBAction func didTapOnPrev( sender: Any) {
+    
+        currentIndex = currentIndex - 1
         
-    func updateLabels() {
-        let currentFlashcard = flashcards[currentIndex]
-        frontlabel.text = currentFlashcard.question
-        backlabel.text = currentFlashcard.answer
-    }
-    
-  
-    
-    
-    //~~~~~~updating flashcards~~~~~~
-    func updateFlashcard(question: String, answer: String, extra1: String, extra2: String) {
-        let flashcard = Flashcard(question: question, answer: answer, extra1: extra1, extra2: extra2)
-        option1.setTitle(extra1, for: .normal)
-        option2.setTitle(answer, for: .normal)
-        option3.setTitle(extra2, for: .normal)
-        flashcards.append(flashcard)
-        print("🎉New Flashcard Added!🎉")
-        print("There are now \(flashcards.count) flashcards!")
-        currentIndex = flashcards.count - 1
-        print("Your current index is \(currentIndex)!")
         updateNextPrevButtons()
-        updateLabels()
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        
     }
+     
+     func updateLabels() {
+             let currentFlashcard = flashcards[currentIndex]
+             frontlabel.text = currentFlashcard.question
+             backlabel.text = currentFlashcard.answer
+     }
+     
+     
+     
+     
    
-        
-        
+    
+         
+         
         
         
         
@@ -115,6 +123,21 @@ class ViewController: UIViewController {
     
         
         
+          //~~~~~~updating flashcards~~~~~~
+          func updateFlashcard(question: String, answer: String, extra1: String, extra2: String) {
+              let flashcard = Flashcard(question: question, answer: answer, extra1: extra1, extra2: extra2)
+              option1.setTitle(extra1, for: .normal)
+              option2.setTitle(answer, for: .normal)
+              option3.setTitle(extra2, for: .normal)
+              flashcards.append(flashcard)
+              print("🎉New Flashcard Added!🎉")
+              print("There are now \(flashcards.count) flashcards!")
+              currentIndex = flashcards.count - 1
+              print("Your current index is \(currentIndex)!")
+              updateNextPrevButtons()
+              updateLabels()
+          //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          }
         
     
 override func viewDidLoad() {

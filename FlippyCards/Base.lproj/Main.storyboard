@@ -131,9 +131,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="65"/>
                                 <color key="tintColor" red="0.48684423580000002" green="0.44064744550000001" blue="0.00113242446" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="←"/>
-                                <connections>
-                                    <action selector="didTapOnPrev:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t1x-kI-WYA"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmn-TI-sXM">
                                 <rect key="frame" x="300" y="753" width="75" height="79"/>
@@ -141,9 +138,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="65"/>
                                 <color key="tintColor" red="0.48684423580000002" green="0.44064744550000001" blue="0.00113242446" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="→"/>
-                                <connections>
-                                    <action selector="didTapOnNext:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JZg-ec-YKO"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -167,11 +161,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="zsT-yG-CVm">
-                    <connections>
-                        <action selector="didTapOnFlashcard:" destination="BYZ-38-t0r" id="UIw-EJ-R6F"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="zsT-yG-CVm"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
         </scene>
