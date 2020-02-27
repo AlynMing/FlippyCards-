@@ -79,8 +79,12 @@ class ViewController: UIViewController {
         option3.setTitle(currentFlashcard.extra2, for: .normal)
     }
     
+    
      
      
+    
+    
+    //~~~~~~Prev&Next Functionality~~~~~~
      @IBAction func didTapOnNext( sender: Any) {
      
          currentIndex = currentIndex + 1
@@ -104,8 +108,7 @@ class ViewController: UIViewController {
         resetQuestion()
         
     }
-     
-
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      
      
      
