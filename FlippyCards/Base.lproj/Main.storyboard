@@ -131,6 +131,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="65"/>
                                 <color key="tintColor" red="0.48684423580000002" green="0.44064744550000001" blue="0.00113242446" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="←"/>
+                                <connections>
+                                    <action selector="didTapOnPrevWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vVk-eb-wJg"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmn-TI-sXM">
                                 <rect key="frame" x="300" y="753" width="75" height="79"/>
@@ -138,6 +141,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="65"/>
                                 <color key="tintColor" red="0.48684423580000002" green="0.44064744550000001" blue="0.00113242446" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="→"/>
+                                <connections>
+                                    <action selector="didTapOnNextWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a8l-vb-S7T"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

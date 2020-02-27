@@ -72,9 +72,12 @@ class ViewController: UIViewController {
      
      func updateLabels() {
              let currentFlashcard = flashcards[currentIndex]
-             frontlabel.text = currentFlashcard.question
-             backlabel.text = currentFlashcard.answer
-     }
+            frontlabel.text = currentFlashcard.question
+            backlabel.text = currentFlashcard.answer
+        option1.setTitle(currentFlashcard.extra1, for: .normal)
+        option2.setTitle(currentFlashcard.answer, for: .normal)
+        option3.setTitle(currentFlashcard.extra2, for: .normal)
+    }
      
      
      @IBAction func didTapOnNext( sender: Any) {
@@ -84,6 +87,8 @@ class ViewController: UIViewController {
          updateLabels()
          
          updateNextPrevButtons()
+        
+         resetQuestion()
          
      }
 
@@ -94,6 +99,8 @@ class ViewController: UIViewController {
         updateLabels()
         
         updateNextPrevButtons()
+        
+        resetQuestion()
         
     }
      
@@ -116,7 +123,7 @@ class ViewController: UIViewController {
         } else {
             NextButton.isEnabled = true
         }
-        if currentIndex == flashcards.count - currentIndex - 1 {
+        if currentIndex == flashcards.count - flashcards.count {
             PrevButton.isEnabled = false
         } else {
             PrevButton.isEnabled = true
@@ -207,16 +214,12 @@ override func viewDidLoad() {
             updateLabels()
             updateNextPrevButtons()
         }
+    
+        readSavedFlashcards()
 }
     
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let navigationController = segue.destination as! UINavigationController
-        let creationController = navigationController.topViewController as! CreationViewController
-        creationController.flashcardsController = self
+    func resetQuestion() {
         
-        
-       
         self.option1.backgroundColor = #colorLiteral(red: 1, green: 0.990821898, blue: 0.4215033054, alpha: 1)
         self.xmarksymbol1.isHidden = true
         
@@ -225,6 +228,17 @@ override func viewDidLoad() {
 
         self.option3.backgroundColor = #colorLiteral(red: 1, green: 0.990821898, blue: 0.4215033054, alpha: 1)
         self.xmarksymbol2.isHidden = true
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navigationController = segue.destination as! UINavigationController
+        let creationController = navigationController.topViewController as! CreationViewController
+        creationController.flashcardsController = self
+        
+        
+       
+        resetQuestion()
         
     }
     
