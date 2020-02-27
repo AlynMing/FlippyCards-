@@ -78,6 +78,7 @@ class ViewController: UIViewController {
         option2.setTitle(currentFlashcard.answer, for: .normal)
         option3.setTitle(currentFlashcard.extra2, for: .normal)
     }
+    
      
      
      @IBAction func didTapOnNext( sender: Any) {
