@@ -40,14 +40,54 @@ class ViewController: UIViewController {
     @IBOutlet weak var PrevButton: UIButton!
     @IBOutlet weak var NextButton: UIButton!
     
+    @IBAction func didTapDelete(_ sender: Any) {
+        
+        if currentIndex == 0 {
+            let alert = UIAlertController(title: "Error", message: "You cannot delete the last flashcard!", preferredStyle: .actionSheet)
+            let cancelAction = UIAlertAction(title: "Dismiss", style: .cancel)
+            alert.addAction(cancelAction)
+            present(alert, animated: true, completion: nil)
+            
+        } else {
+            let alert = UIAlertController(title: "Delete Card", message: "Are you sure about that?", preferredStyle: .actionSheet)
+            
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { action in
+                self.deleteCurrentFlashcard()
+            }
+            alert.addAction(deleteAction)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            alert.addAction(cancelAction)
+            present(alert, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func deleteCurrentFlashcard() {
+        flashcards.remove(at: currentIndex)
+        
+        if currentIndex > flashcards.count - 1 {
+            currentIndex = flashcards.count - 1
+        }
+        
+        // update our labels and buttons
+        updateNextletesPrevButtons()
+        updateLabels()
+        
+        // save remaining flashcards to disk
+        saveAllFlashcardsToDisk()
+    }
+        
+        
+        
+
     
     
     
-    
+
     
     func saveAllFlashcardsToDisk() {
         let dictionaryArray = flashcards.map { (card) -> [String: String] in
-            return ["question": card.question, "answer": card.answer]
+            return ["question": card.question, "answer": card.answer, "extra1": card.extra1, "extra2": card.extra2]
         }
         UserDefaults.standard.set(dictionaryArray, forKey: "flashcards")
         print("Flashcards saved to UserDefaults!")
@@ -60,9 +100,10 @@ class ViewController: UIViewController {
     func readSavedFlashcards(){
         if let dictionaryArray = UserDefaults.standard.array(forKey: "flashcards") as? [[String: String]] {
             let savedCards = dictionaryArray.map { dictionary -> Flashcard in
+                
                 return Flashcard(question: dictionary["question"]!, answer: dictionary["answer"]!, extra1: dictionary["extra1"]!, extra2: dictionary["extra2"]!)
         }
-            flashcards.append(contentsOf: savedCards)
+    flashcards.append(contentsOf: savedCards)
     }
     }
     
@@ -149,6 +190,7 @@ class ViewController: UIViewController {
               print("There are now \(flashcards.count) flashcards!")
               currentIndex = flashcards.count - 1
               print("Your current index is \(currentIndex)!")
+              saveAllFlashcardsToDisk()
               updateNextPrevButtons()
               updateLabels()
           //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -212,14 +254,15 @@ override func viewDidLoad() {
         
         readSavedFlashcards()
         
+    
         if flashcards.count == 0 {
-        updateFlashcard(question: "What is the current seasonal slushie at Taco Bell?", answer: "Electric Blue Raspberry", extra1: "Pineapple Sunset", extra2: "Watermelon with Seeds")
+            updateFlashcard(question: "What is the current seasonal slushie at Taco Bell?", answer: "Electric Blue Raspberry", extra1: "Pineapple Sunset", extra2: "Watermelon with Seeds")
         } else {
             updateLabels()
             updateNextPrevButtons()
         }
+
     
-        readSavedFlashcards()
 }
     
     func resetQuestion() {
@@ -239,9 +282,6 @@ override func viewDidLoad() {
         let navigationController = segue.destination as! UINavigationController
         let creationController = navigationController.topViewController as! CreationViewController
         creationController.flashcardsController = self
-        
-        
-       
         resetQuestion()
         
     }
