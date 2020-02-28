@@ -72,4 +72,4 @@ New save functions and delete flashcard option
 ## Optional
 - [x] User can delete a flashcard
 - [ ] User can edit existing flashcard
-- [ ] User can store multiple choice questions
+- [x] User can store multiple choice questions
