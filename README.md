@@ -52,3 +52,24 @@ Optional and extra features enabled, allowing new multiple choice cards and rese
 - [x] User can add multiple choice answers in the creation screen
 ## Extra
 - [x] Question is automatically reset by tapping "+" button to add a new card
+.
+.
+.
+.
+.
+## Lab 3
+
+### App Description
+New save functions and delete flashcard option
+
+### App Walk-though
+<img src="http://g.recordit.co/ppW6bXk3ZW.gif" width=200><br>
+
+## Required
+- [x] User can browse through multiple flashcards
+- [x] User can re-open the app and see previously created flashcards
+- [x] Push code to GitHub
+## Optional
+- [x] User can delete a flashcard
+- [ ] User can edit existing flashcard
+- [ ] User can store multiple choice questions
