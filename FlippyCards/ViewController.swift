@@ -70,7 +70,7 @@ class ViewController: UIViewController {
         }
         
         // update our labels and buttons
-        updateNextletesPrevButtons()
+        updateNextPrevButtons()
         updateLabels()
         
         // save remaining flashcards to disk
