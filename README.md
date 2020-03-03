@@ -73,3 +73,39 @@ New save functions and delete flashcard option
 - [x] User can delete a flashcard
 - [ ] User can edit existing flashcard
 - [x] User can store multiple choice questions
+
+.
+.
+.
+.
+.
+
+## Lab 4
+
+### App Description
+Week 4 of CodePath flashcards lab assigmnent!  
+Fully completed and functional app, with optional features.  
+App allows user to add new cards, delete existing cards, answer multiple choice questions, etc. 
+Intro of splash screen incudes logo and title of app, "FlippyCards".  
+Animated user-interface shows bounce effect for intro, and slide effect for changing cards.
+All flashcards created are saved on the device until deleted or the app is uninstalled.
+
+### App Walk-though
+<img src="http://g.recordit.co/rPx9lCJs3c.gif" width=200><br>
+<img src="http://g.recordit.co/nibPXYTr5W.gif" width=200><br>
+
+## Required
+- [x] User should see the app icon 
+- [x] User should see a splash screen
+- [x] User should see an flip animation when revealing the answer
+- [x] User should see a slide animation when going to the next flashcard
+- [x] User should see a slide animation when going to the previous flashcard
+- [x] Push code to GitHub
+## Optional
+- [x] User should see a nicer flaschard with rounded corners, shadows, and animating when showing the first time
+- [x] User should see all views properly layout when using the app on a phone of different sizes
+- [x] Correct answer in multiple choice should be random
+## Extra
+- [x] User is only unable to delete a flashcard IF there is only 1 left in the deck
+(prevents the discrepancy of a permanent placeholder card even if there is multiple cards in the deck)
+- [x] Rearranged buttons for more simplified user interface
