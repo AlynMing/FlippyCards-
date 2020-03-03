@@ -39,17 +39,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var checkmarksymbol: UIImageView!
     @IBOutlet weak var PrevButton: UIButton!
     @IBOutlet weak var NextButton: UIButton!
-    
+    @IBOutlet weak var checkmarkopt3: UIImageView!
+    @IBOutlet weak var xmarksymbolmid: UIImageView!
+    @IBOutlet weak var checkmarkopt1: UIImageView!
     @IBAction func didTapDelete(_ sender: Any) {
         
-        if currentIndex == 0 {
+        if flashcards.count == 1 {
             let alert = UIAlertController(title: "Error", message: "You cannot delete the last flashcard!", preferredStyle: .actionSheet)
             let cancelAction = UIAlertAction(title: "Dismiss", style: .cancel)
             alert.addAction(cancelAction)
             present(alert, animated: true, completion: nil)
             
         } else {
-            let alert = UIAlertController(title: "Delete Card", message: "Are you sure about that?", preferredStyle: .actionSheet)
+            let alert = UIAlertController(title: "Delete Flashcard", message: "Warning: This will permanently delete the card!", preferredStyle: .actionSheet)
             
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { action in
                 self.deleteCurrentFlashcard()
@@ -61,6 +63,9 @@ class ViewController: UIViewController {
         }
         
     }
+    
+    
+   
     
     func deleteCurrentFlashcard() {
         flashcards.remove(at: currentIndex)
@@ -79,7 +84,7 @@ class ViewController: UIViewController {
         
         
         
-
+ 
     
     
     
@@ -108,33 +113,74 @@ class ViewController: UIViewController {
     }
     
       
+  
+     
+    var correctAnswerButton: UIButton!
 
-     
-     
      func updateLabels() {
              let currentFlashcard = flashcards[currentIndex]
             frontlabel.text = currentFlashcard.question
             backlabel.text = currentFlashcard.answer
-        option1.setTitle(currentFlashcard.extra1, for: .normal)
-        option2.setTitle(currentFlashcard.answer, for: .normal)
-        option3.setTitle(currentFlashcard.extra2, for: .normal)
+        
+     let buttons = [option1, option2, option3].shuffled()
+     let answers = [currentFlashcard.answer, currentFlashcard.extra1, currentFlashcard.extra2].shuffled()
+        
+    for (button, answer) in zip(buttons, answers) {
+    button?.setTitle(answer, for: .normal)
+
+        if answer == currentFlashcard.answer{
+        correctAnswerButton = button
+        }
+        }
     }
     
-    
      
-     
+    func animateCardOutRight(){
+        UIView.animate(withDuration: 0.3, animations: {
+            self.cards.transform = CGAffineTransform.identity.translatedBy(x: -300.0, y: 0.0)
+        }, completion: { finished in
+            self.updateLabels()
+            self.animateCardInRight()
+        })
+    }
     
+    func animateCardInRight(){
+        
+        cards.transform = CGAffineTransform.identity.translatedBy(x: 300.0, y: 0.0)
+        
+        UIView.animate(withDuration: 0.2) {
+            self.cards.transform = CGAffineTransform.identity
+        }
+    }
+   
+    func animateCardOutLeft(){
+           UIView.animate(withDuration: 0.3, animations: {
+               self.cards.transform = CGAffineTransform.identity.translatedBy(x: 300.0, y: 0.0)
+           }, completion: { finished in
+               self.updateLabels()
+               self.animateCardInLeft()
+           })
+       }
+       
+       func animateCardInLeft(){
+           
+           cards.transform = CGAffineTransform.identity.translatedBy(x: -300.0, y: 0.0)
+           
+           UIView.animate(withDuration: 0.2) {
+               self.cards.transform = CGAffineTransform.identity
+           }
+       }
     
     //~~~~~~Prev&Next Functionality~~~~~~
      @IBAction func didTapOnNext( sender: Any) {
      
          currentIndex = currentIndex + 1
-        
-         updateLabels()
          
          updateNextPrevButtons()
         
          resetQuestion()
+        
+         animateCardOutRight()
          
      }
 
@@ -142,11 +188,11 @@ class ViewController: UIViewController {
     
         currentIndex = currentIndex - 1
         
-        updateLabels()
-        
         updateNextPrevButtons()
         
         resetQuestion()
+        
+        animateCardOutLeft()
         
     }
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -199,7 +245,8 @@ class ViewController: UIViewController {
     
 override func viewDidLoad() {
         super.viewDidLoad()
-        
+        resetQuestion()
+    
         //~~~~~~correct and incorrect symbols~~~~~~
         xmarksymbol1.isHidden = true
         xmarksymbol2.isHidden = true
@@ -208,7 +255,8 @@ override func viewDidLoad() {
        
         //~~~~~~rounded card corners~~~~~~
         cards.layer.cornerRadius = 15
-        cards.clipsToBounds = true
+        frontlabel.layer.cornerRadius = 15
+        backlabel.layer.cornerRadius = 15
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         
         
@@ -219,36 +267,31 @@ override func viewDidLoad() {
         
         
         //~~~~~~shadows for cards~~~~~~
-        cards.layer.shadowRadius = 20.0
-        cards.layer.shadowOpacity = 0.1
+        cards.layer.shadowRadius = 9.0
+        cards.layer.shadowOpacity = 0.5
+        cards.layer.shadowColor = #colorLiteral(red: 0.5058823824, green: 0.3372549117, blue: 0.06666667014, alpha: 1)
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         
         
         //~~~~~~borders for options~~~~~~
         option1.layer.borderWidth = 3.0
-        option1.layer.borderColor = #colorLiteral(red: 1, green: 0.9804150462, blue: 0, alpha: 1)
+        option1.layer.borderColor = #colorLiteral(red: 0.9670787454, green: 0.9030047059, blue: 0.4915370941, alpha: 1)
         option2.layer.borderWidth = 3.0
-        option2.layer.borderColor = #colorLiteral(red: 1, green: 0.9804150462, blue: 0, alpha: 1)
+        option2.layer.borderColor = #colorLiteral(red: 0.9670787454, green: 0.9030047059, blue: 0.4915370941, alpha: 1)
         option3.layer.borderWidth = 3.0
-        option3.layer.borderColor = #colorLiteral(red: 1, green: 0.9804150462, blue: 0, alpha: 1)
+        option3.layer.borderColor = #colorLiteral(red: 0.9662605246, green: 0.9012485355, blue: 0.4901985501, alpha: 1)
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         
         
         //~~~~~~rounded options corners~~~~~~
         //option 1 corners
-        option1view.layer.cornerRadius = 15
-        option1view.clipsToBounds = true
-        option1.clipsToBounds = true
+        option1.layer.cornerRadius = 15
         option1.clipsToBounds = true
         //option 2 corners
-        option2view.layer.cornerRadius = 15
-        option2view.clipsToBounds = true
-        option2.clipsToBounds = true
+        option2.layer.cornerRadius = 15
         option2.clipsToBounds = true
         //option 3 corners
-        option3view.layer.cornerRadius = 15
-        option3view.clipsToBounds = true
-        option3.clipsToBounds = true
+        option3.layer.cornerRadius = 15
         option3.clipsToBounds = true
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         
@@ -256,7 +299,7 @@ override func viewDidLoad() {
         
     
         if flashcards.count == 0 {
-            updateFlashcard(question: "What is the current seasonal slushie at Taco Bell?", answer: "Electric Blue Raspberry", extra1: "Pineapple Sunset", extra2: "Watermelon with Seeds")
+            updateFlashcard(question: "What is a great way to study?", answer: "FlippyCards!", extra1: "Other apps", extra2: "Don't study")
         } else {
             updateLabels()
             updateNextPrevButtons()
@@ -264,17 +307,46 @@ override func viewDidLoad() {
 
     
 }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.cards.alpha = 0.0
+        self.cards.transform = CGAffineTransform.identity.scaledBy(x: 0.75, y: 0.75)
+        self.option1.alpha = 0.0
+        self.option1.transform = CGAffineTransform.identity.scaledBy(x: 0.75, y: 0.75)
+        self.option2.alpha = 0.0
+        self.option2.transform = CGAffineTransform.identity.scaledBy(x: 0.75, y: 0.75)
+        self.option3.alpha = 0.0
+        self.option3.transform = CGAffineTransform.identity.scaledBy(x: 0.75, y: 0.75)
+        
+        UIView.animate(withDuration: 0.6, delay: 0.5, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.1, options: [], animations: {
+            self.cards.alpha = 1.0
+            self.cards.transform = CGAffineTransform.identity
+            self.option1.alpha = 1.0
+            self.option1.transform = CGAffineTransform.identity
+            self.option2.alpha = 1.0
+            self.option2.transform = CGAffineTransform.identity
+            self.option3.alpha = 1.0
+            self.option3.transform = CGAffineTransform.identity
+        })
+    }
+    
+
     
     func resetQuestion() {
         
         self.option1.backgroundColor = #colorLiteral(red: 1, green: 0.990821898, blue: 0.4215033054, alpha: 1)
         self.xmarksymbol1.isHidden = true
+        self.checkmarkopt1.isHidden = true
         
         self.frontlabel.isHidden = false
+        self.option2.backgroundColor = #colorLiteral(red: 1, green: 0.990821898, blue: 0.4215033054, alpha: 1)
         self.checkmarksymbol.isHidden = true
+        self.xmarksymbolmid.isHidden = true
 
         self.option3.backgroundColor = #colorLiteral(red: 1, green: 0.990821898, blue: 0.4215033054, alpha: 1)
         self.xmarksymbol2.isHidden = true
+        self.checkmarkopt3.isHidden = true
         
     }
     
@@ -286,26 +358,47 @@ override func viewDidLoad() {
         
     }
     
-    
+    func flipFlashcard(){
+        
+        UIView.transition(with: cards, duration: 0.2, options: .transitionFlipFromRight, animations: {
+            self.frontlabel.isHidden = true
+        })
+    }
     
     //~~~~~~logic for options~~~~~~
     
         @IBAction func tappedoption1(_ sender: Any) {
-    option1.backgroundColor = #colorLiteral(red: 1, green: 0.9768008926, blue: 0.4592402693, alpha: 0.5)
-    xmarksymbol1.isHidden = false
+            if option1 == correctAnswerButton {
+                flipFlashcard()
+                checkmarkopt1.isHidden = false
+            } else {
+                option1.backgroundColor = #colorLiteral(red: 1, green: 0.9768008926, blue: 0.4592402693, alpha: 0.5)
+                xmarksymbol1.isHidden = false
+            }
     }
     
         @IBAction func tappedoption2(_ sender: Any) {
-    frontlabel.isHidden = true
-    checkmarksymbol.isHidden = false
+            if option2 == correctAnswerButton {
+                flipFlashcard()
+                checkmarksymbol.isHidden = false
+            } else {
+                option2.backgroundColor = #colorLiteral(red: 1, green: 0.9768008926, blue: 0.4592402693, alpha: 0.5)
+                xmarksymbolmid.isHidden = false
+            }
     }
     
         @IBAction func tappedoption3(_ sender: Any) {
-    option3.backgroundColor = #colorLiteral(red: 1, green: 0.9768008926, blue: 0.4592402693, alpha: 0.5)
-    xmarksymbol2.isHidden = false
+            if option3 == correctAnswerButton {
+                flipFlashcard()
+                checkmarkopt3.isHidden = false
+            } else {
+                option3.backgroundColor = #colorLiteral(red: 1, green: 0.9768008926, blue: 0.4592402693, alpha: 0.5)
+                xmarksymbol2.isHidden = false
+            }
     }
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    
+
+
 
 }
 
