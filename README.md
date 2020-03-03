@@ -41,6 +41,7 @@ Optional and extra features enabled, allowing new multiple choice cards and rese
 ### App Walk-though
 <img src="http://g.recordit.co/BrhabHqOyQ.gif" width=200><br>
 
+
 ## Required
 - [x] User can open the creation screen
 - [x] User can cancel out of the creation screen
@@ -109,3 +110,5 @@ All flashcards created are saved on the device until deleted or the app is unins
 - [x] User is only unable to delete a flashcard IF there is only 1 left in the deck
 (prevents the discrepancy of a permanent placeholder card even if there is multiple cards in the deck)
 - [x] Rearranged buttons for more simplified user interface
+- [x] Score counter to show total incorrect and correct responses; Scores are reset when app is closed; gif below
+<img src="http://g.recordit.co/c4OmPp3ny2.gif" width=200><br>
