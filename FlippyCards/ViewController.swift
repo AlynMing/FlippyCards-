@@ -25,6 +25,8 @@ class ViewController: UIViewController {
     
     
     //~~~~~~outlets and actions~~~~~~~
+    @IBOutlet weak var CorrectScoreLabel: UILabel!
+    @IBOutlet weak var IncorrectScoreLabel: UILabel!
     @IBOutlet weak var cards: UIView!
     @IBOutlet weak var backlabel: UILabel!
     @IBOutlet weak var frontlabel: UILabel!
@@ -84,7 +86,9 @@ class ViewController: UIViewController {
         
         
         
- 
+var CorrectScore = 0
+var IncorrectScore = 0
+    
     
     
     
@@ -246,6 +250,11 @@ class ViewController: UIViewController {
 override func viewDidLoad() {
         super.viewDidLoad()
         resetQuestion()
+        CorrectScore = 0
+        IncorrectScore = 0
+        CorrectScoreLabel.text = "Correct: \(CorrectScore)"
+        IncorrectScoreLabel.text = "Incorrect: \(IncorrectScore)"
+    
     
         //~~~~~~correct and incorrect symbols~~~~~~
         xmarksymbol1.isHidden = true
@@ -371,9 +380,13 @@ override func viewDidLoad() {
             if option1 == correctAnswerButton {
                 flipFlashcard()
                 checkmarkopt1.isHidden = false
+                CorrectScore += 1
+                CorrectScoreLabel.text = "Correct: \(CorrectScore)"
             } else {
                 option1.backgroundColor = #colorLiteral(red: 1, green: 0.9768008926, blue: 0.4592402693, alpha: 0.5)
                 xmarksymbol1.isHidden = false
+                IncorrectScore += 1
+                IncorrectScoreLabel.text = "Incorrect: \(IncorrectScore)"
             }
     }
     
@@ -381,9 +394,13 @@ override func viewDidLoad() {
             if option2 == correctAnswerButton {
                 flipFlashcard()
                 checkmarksymbol.isHidden = false
+                CorrectScore += 1
+                CorrectScoreLabel.text = "Correct: \(CorrectScore)"
             } else {
                 option2.backgroundColor = #colorLiteral(red: 1, green: 0.9768008926, blue: 0.4592402693, alpha: 0.5)
                 xmarksymbolmid.isHidden = false
+                IncorrectScore += 1
+                IncorrectScoreLabel.text = "Incorrect: \(IncorrectScore)"
             }
     }
     
@@ -391,9 +408,13 @@ override func viewDidLoad() {
             if option3 == correctAnswerButton {
                 flipFlashcard()
                 checkmarkopt3.isHidden = false
+                CorrectScore += 1
+                CorrectScoreLabel.text = "Correct: \(CorrectScore)"
             } else {
                 option3.backgroundColor = #colorLiteral(red: 1, green: 0.9768008926, blue: 0.4592402693, alpha: 0.5)
                 xmarksymbol2.isHidden = false
+                IncorrectScore += 1
+                IncorrectScoreLabel.text = "Incorrect: \(IncorrectScore)"
             }
     }
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
