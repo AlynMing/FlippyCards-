@@ -7,7 +7,7 @@ X.V. (SOAstudent) flashcards app lab assignment for CodePath week 4.
 Optional and extra features enabled, allowing new multiple choice cards and reset question.
 
 ### App Walk-though
-<img src="http://g.recordit.co/BrhabHqOyQ.gif" width=200><br>
+<img src="YOUR_GIF_HERE" width=200><br>
 
 
 ## Required
