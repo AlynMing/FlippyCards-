@@ -11,16 +11,16 @@ Optional and extra features enabled, allowing new multiple choice cards and rese
 
 
 ## Required
-- [x] User can open the creation screen
-- [x] User can cancel out of the creation screen
-- [x] User can enter a new question and answer in the creation screen to then show it on the flashcard
-- [x] Push code to GitHub
+- [ ] User can open the creation screen
+- [ ] User can cancel out of the creation screen
+- [ ] User can enter a new question and answer in the creation screen to then show it on the flashcard
+- [ ] Push code to GitHub
 ## Optional
 - [ ] User gets an error if they try to create a new flashcard with no question or answer
 - [ ] User can edit existing flashcard (not applicable for multiple choice questions)
-- [x] User can add multiple choice answers in the creation screen
+- [ ] User can add multiple choice answers in the creation screen
 ## Extra
-- [x] Question is automatically reset by tapping "+" button to add a new card
+- [ ] Question is automatically reset by tapping "+" button to add a new card
 .
 .
 .
